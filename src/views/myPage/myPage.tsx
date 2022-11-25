@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { AuthContext, MusicForm, MusicList, SearchBar } from "../../components";
+import { AuthContext, MusicList, SearchBar } from "../../components";
 
 
 export const MyPage = () => {
@@ -11,11 +11,9 @@ export const MyPage = () => {
     }
 
     return (
-        <>
-            <h3>My Page</h3>
-            <MusicForm />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <SearchBar />
             <MusicList />
-        </>
+        </div>
     );
 };

@@ -1,29 +1,46 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CustomButton, Settings, UsernameForm } from ".";
 import { auth, signInWithGoogle } from "../services";
 import { AuthContext } from "./auth";
 
 export const NavBar = () => {
     const { currentUser } = useContext(AuthContext);
+    const [selectedPage, setSelectedPage] = useState(window.location.pathname === "/" ? "/home" : window.location.pathname);
 
     const showLoginButton = () => {
         return currentUser
             ? <>
-                <Link to="/mypage">My Page</Link>
-                <button onClick={() => { if (window.confirm("Are you sure you want to sign out?")) { auth.signOut(); } }}>sign out</button>
-                <img style={{ width: "2em", height: "2em" }} src={currentUser.photoURL} alt="user's google account photo" />
+                <Link to="/mypage"
+                    onClick={() => setSelectedPage("/mypage")}
+                    style={{ margin: "5px", textDecoration: selectedPage === "/mypage" ? "underline" : "" }}>
+                    My Page
+                </Link>
+                <Settings />
             </>
-            : <button onClick={signInWithGoogle}>sign in</button>;
+            : <CustomButton buttonText="Sign in" onClickFunction={signInWithGoogle} style={{ margin: "5px" }} />;
+
     };
     return (
         <>
-            <h1>DnD Tunes</h1>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <div>
-                {showLoginButton()}
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+                <h1 style={{ margin: "1em" }}>DnD Tunes</h1>
+                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-end", margin: "1em", fontSize: "0.8em" }}>
+                    <Link to="/"
+                        onClick={() => setSelectedPage("/home")}
+                        style={{ margin: "5px", textDecoration: selectedPage === "/home" ? "underline" : "" }}>
+                        Home
+                    </Link>
+                    <Link to="/about"
+                        onClick={() => setSelectedPage("/about")}
+                        style={{ margin: "5px", textDecoration: selectedPage === "/about" ? "underline" : "" }}>
+                        About
+                    </Link>
+                    {showLoginButton()}
+                </div>
             </div>
+            <hr style={{ width: "80%" }} />
         </>
     );
 };

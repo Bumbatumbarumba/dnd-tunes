@@ -8,7 +8,6 @@ export const MusicForm = () => {
     // ACTUALLY, probably wanna put tagList into redux
     //      --> PROBABLY WANT TO PUT 97% OF STUFF INTO REDUX, then locally in useState for searching n' shit
     const [tagList, setTagList] = useState([{ id: "123", tagName: "tag1", isSelected: false }, { id: "456", tagName: "tag2", isSelected: false }]);
-    const [isExpanded, setIsExpanded] = useState(false);
 
     const handleCheckChange = (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedList = [...tagList];
@@ -19,13 +18,9 @@ export const MusicForm = () => {
 
     return (
         <>
-            <Accordion onClick={() => setIsExpanded(!isExpanded)}>
-                <AccordionSummary >
+            <Accordion disableGutters={true}>
+                <AccordionSummary expandIcon={<DownCaret />}>
                     Add song
-                    {!isExpanded
-                        ? <DownCaret />
-                        : <UpCaret />
-                    }
                 </AccordionSummary >
                 <AccordionDetails>
                     <TextField id="outlined-basic" label="Song name" variant="outlined" />
@@ -41,7 +36,6 @@ export const MusicForm = () => {
                     <Button variant="contained">Add</Button>
                 </AccordionDetails>
             </Accordion>
-            <hr />
         </>
     );
 };

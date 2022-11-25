@@ -1,7 +1,7 @@
 import { User } from "@firebase/auth";
 import React, { useEffect, useState } from "react";
 import { UserData } from "../definitions";
-import { auth } from "../services";
+import { auth, SessionStorageService } from "../services";
 
 export const AuthContext = React.createContext<any | null>(null);
 
@@ -20,6 +20,9 @@ export const AuthProvider = ({ children }: any) => {
                 // 1. check if username is in session storage
                 // 2. get username from firebase db
                 // 3. save it in session storage
+            }
+            else {
+                SessionStorageService.deleteUsername();
             }
             setCurrentUser(userData);
             setPending(false);

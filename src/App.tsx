@@ -14,11 +14,13 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <NavBar></NavBar>
-          <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/about' element={<About />} />
-            <Route path='/myPage' element={<MyPage />} />
-          </Routes>
+          <div className="body-content">
+            <Routes>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/myPage' element={<MyPage />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </AuthProvider>
     </>

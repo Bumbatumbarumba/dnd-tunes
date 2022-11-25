@@ -3,10 +3,9 @@ import { MusicList, SearchBar } from "../../components";
 
 export const MainPage = () => {
     return (
-        <>
-            <h1>Main Page</h1>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <SearchBar />
             <MusicList />
-        </>
+        </div>
     );
 };
