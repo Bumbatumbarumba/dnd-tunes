@@ -24,6 +24,15 @@ export const Settings = () => {
                 setDrawerState(open);
             };
 
+    const DrawerHeader = styled('div')(({ theme }) => ({
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+    }));
+
     return (
         <>
             <IconButton onClick={toggleDrawer(true)}><Hamburger /></IconButton>
@@ -40,16 +49,15 @@ export const Settings = () => {
                 }}
             >
                 <div style={{ margin: "1em", display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", verticalAlign: "middle" }}>
+                    <DrawerHeader>
                         <div onClick={toggleDrawer(false)}><RightCaret /></div>
-                        <div>
-                            <CustomButton buttonText="Sign out" onClickFunction={() => { if (window.confirm("Are you sure you want to sign out?")) { auth.signOut(); } }} />
-                        </div>
-                        <img style={{ width: "2em", height: "2em", borderRadius: "50%" }} src={currentUser.photoURL} alt="user's google account photo" />
+                        <CustomButton buttonText="Sign out" onClickFunction={() => { if (window.confirm("Are you sure you want to sign out?")) { auth.signOut(); } }} />
+                    </DrawerHeader>
+                    <div style={{ marginTop: "1em" }}>
+                        <UsernameForm />
+                        <TagContainer />
+                        <MusicForm />
                     </div>
-                    <UsernameForm />
-                    <TagContainer />
-                    <MusicForm />
                 </div>
             </Drawer>
         </>

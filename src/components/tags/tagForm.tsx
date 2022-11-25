@@ -5,16 +5,10 @@ export const TagForm = () => {
     const [tagName, setTagName] = useState("");
 
     return (
-        <Box
-            component="form"
-            sx={{
-                "backgroundColor": "white"
-            }}
-            noValidate
-            autoComplete="off"
-        >
+        <div style={{ display: "flex", flexDirection: "column" }}>
             <TextField id="outlined-basic" label="Tag name" variant="filled" onChange={(event) => setTagName(event.target.value)} />
             <Button variant="contained" disabled={!tagName}>Add</Button>
-        </Box>
+            {/* <CustomButton buttonText="Add" onClickFunction={() => { }} buttonIsDisabled={!tagName} /> */}
+        </div>
     );
 };
