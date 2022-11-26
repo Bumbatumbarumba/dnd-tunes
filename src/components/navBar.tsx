@@ -23,24 +23,21 @@ export const NavBar = () => {
 
     };
     return (
-        <>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                <h1 style={{ margin: "1em" }}>DnD Tunes</h1>
-                <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-end", margin: "1em", fontSize: "0.8em" }}>
-                    <Link to="/"
-                        onClick={() => setSelectedPage("/home")}
-                        style={{ margin: "5px", textDecoration: selectedPage === "/home" ? "underline" : "" }}>
-                        Home
-                    </Link>
-                    <Link to="/about"
-                        onClick={() => setSelectedPage("/about")}
-                        style={{ margin: "5px", textDecoration: selectedPage === "/about" ? "underline" : "" }}>
-                        About
-                    </Link>
-                    {showLoginButton()}
-                </div>
+        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", backgroundColor: "#393838" }}>
+            <h1 style={{ margin: "1em" }}>DnD Tunes</h1>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "flex-end", margin: "1em", fontSize: "0.8em" }}>
+                <Link to="/"
+                    onClick={() => setSelectedPage("/home")}
+                    style={{ margin: "5px", textDecoration: selectedPage === "/home" ? "underline" : "" }}>
+                    Home
+                </Link>
+                <Link to="/about"
+                    onClick={() => setSelectedPage("/about")}
+                    style={{ margin: "5px", textDecoration: selectedPage === "/about" ? "underline" : "" }}>
+                    About
+                </Link>
+                {showLoginButton()}
             </div>
-            <hr style={{ width: "80%" }} />
-        </>
+        </div>
     );
 };

@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useContext, useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, IconButton, Drawer, Button, ButtonProps, styled } from "@mui/material";
-import { AuthContext, CustomButton, MusicForm, TagContainer, UsernameForm } from ".";
-import { DownCaret, Hamburger, RightCaret } from "../definitions";
+import { AuthContext, CustomButton, MusicForm, MusicPlayer, TagContainer, UsernameForm } from ".";
+import { DownCaret, Hamburger, MusicSource, RightCaret } from "../definitions";
 import { auth } from "../services";
 import { purple } from "@mui/material/colors";
 
@@ -54,9 +54,10 @@ export const Settings = () => {
                         <CustomButton buttonText="Sign out" onClickFunction={() => { if (window.confirm("Are you sure you want to sign out?")) { auth.signOut(); } }} />
                     </DrawerHeader>
                     <div style={{ marginTop: "1em" }}>
+                        <MusicPlayer url="https://open.spotify.com/track/6T88yq0DaaC1ctDsHw620y?si=ec7d86b220f64cf5" source={MusicSource.youtube} />
                         <UsernameForm />
-                        <TagContainer />
                         <MusicForm />
+                        <TagContainer />
                     </div>
                 </div>
             </Drawer>

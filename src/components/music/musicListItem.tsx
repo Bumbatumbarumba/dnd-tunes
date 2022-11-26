@@ -1,15 +1,39 @@
-import { IconButton } from "@mui/material";
 import React from "react";
-import { PlayIcon } from "../../definitions";
+import { Avatar, IconButton, ListItem, ListItemAvatar, ListItemText, makeStyles, Stack, Typography } from "@mui/material";
+import Divider from '@mui/material/Divider';
+import { TagList } from "..";
+import { Compass, PlayIcon, Song } from "../../definitions";
 
-export const MusicListItem = (props: { songInfo: { [key: string]: any; }; }) => {
+export interface MusicListItemProps {
+    song: Song;
+}
+
+export const MusicListItem = (props: MusicListItemProps) => {
+    const { song } = props;
+
     return (
         <div>
-            <h3>song title</h3>
-            <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                <PlayIcon />
-            </IconButton>
-            <p>list tags here somehow</p>
+            <Stack direction={"column"} >
+                <ListItem alignItems="flex-start">
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                        <IconButton>
+                            <PlayIcon />
+                        </IconButton>
+                        <ListItemText
+                            primary={<Typography
+                                component="span"
+                                color="#ecdbba">
+                                {song.songName}
+                            </Typography>}
+                        />
+                        <IconButton onClick={() => window?.open(song.url, '_blank')?.focus()}>
+                            <Compass />
+                        </IconButton>
+                    </div>
+                </ListItem>
+                <TagList tagList={song.tags} />
+                <Divider variant="fullWidth" component="li" sx={{ bgcolor: "#ecdbba" }} />
+            </Stack>
         </div>
     );
 };

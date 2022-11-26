@@ -15,7 +15,7 @@ export const TagContainer = () => {
                 </AccordionSummary >
                 <AccordionDetails>
                     <TagForm />
-                    <TagList />
+                    {/* <TagList /> */}
                 </AccordionDetails>
             </Accordion>
         </>

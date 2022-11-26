@@ -5,7 +5,12 @@ import {
     SuccessResponse,
 } from "./api.definition";
 import { UserData } from "./auth.definition";
-import { Song, Tag, Username } from "./firestore.service.definition";
+import {
+    MusicSource,
+    Song,
+    Tag,
+    Username,
+} from "./firestore.service.definition";
 import {
     BlackCircleCheck,
     DownCaret,
@@ -17,6 +22,7 @@ import {
     UpCaret,
     Hamburger,
     RightCaret,
+    Compass,
 } from "./svg.definitions";
 
 export type { ApiResponse, UserData, Tag, Song, Username };
@@ -31,6 +37,8 @@ export {
     GreenCircleCheck,
     RedCross,
     Hamburger,
+    Compass,
+    MusicSource,
     ApiMessage,
     SuccessResponse,
     ErrorResponse,

@@ -1,50 +1,48 @@
-import React from "react";
-import Drawer from '@mui/material/Drawer';
+import React, { useState } from "react";
+import ReactPlayer from 'react-player';
+import { IconButton, Stack } from "@mui/material";
+import Slider from '@mui/material/Slider';
+import { MusicSource, PlayIcon, PauseIcon } from "../../definitions";
+export interface MusicPlayerProps {
+    url: string;
+    source: MusicSource;
+    stopOnUnmount?: boolean;
+}
 
-// type Anchor = 'left' | 'right';
 
-export const MusicPlayer = () => {
-    // const [state, setState] = React.useState({
-    //     left: false,
-    //     right: false,
-    // });
-
-    // const toggleDrawer =
-    //     (anchor: Anchor, open: boolean) =>
-    //         (event: React.KeyboardEvent | React.MouseEvent) => {
-    //             if (
-    //                 event.type === 'keydown' &&
-    //                 ((event as React.KeyboardEvent).key === 'Tab' ||
-    //                     (event as React.KeyboardEvent).key === 'Shift')
-    //             ) {
-    //                 return;
-    //             }
-
-    //             setState({ ...state, [anchor]: open });
-    //         };
-
+export const MusicPlayer = (props: MusicPlayerProps) => {
+    const { url, source, stopOnUnmount } = props;
+    const [isPlaying, setIsPlaying] = useState(false);//change to true eventually
+    const [hasDuration, setHasDuration] = useState(false);
+    const [duration, setDuration] = useState(100);
+    const [position, setPosition] = useState(0);
 
     return (
-        <>
-            {/* <button onClick={toggleDrawer("right", true)}>Open drawer</button>
-            <Drawer
-                anchor="right"
-                open={state["right"]}
-                onClose={toggleDrawer("right", false)}
-                variant="persistent"
-                PaperProps={{
-                    sx: {
-                        height: "10em",
-                        "background-color": "#052da6",
-                        "margin-top": "2em"
-                    }
-                }}
-            >
-                <div style={{ margin: "1em" }}>
-                    <span onClick={toggleDrawer("right", false)}>X</span>
-                    <h1>test</h1>
-                </div>
-            </Drawer> */}
-        </>
+        <div style={{ marginBottom: "1em", border: "solid", borderColor: "#c84b31", borderRadius: "1em" }}>
+            <Stack direction={"row"} spacing={1} alignItems="center">
+                <ReactPlayer onProgress={(event) => setPosition(Math.ceil(event.playedSeconds))}
+                    onDuration={(event) => {
+                        setHasDuration(true);
+                        setDuration(event as number);
+                    }}
+                    onEnded={() => setIsPlaying(false)}
+                    url={url}
+                    playing={isPlaying}
+                    stopOnUnmount={false}
+                    controls={true}
+                    width={0}
+                    height={0} />
+                <IconButton onClick={() => setIsPlaying(!isPlaying)}>
+                    {!isPlaying ? <PlayIcon /> : <PauseIcon />}
+                </IconButton>
+                <Slider size="small"
+                    disabled={true}
+                    value={position}
+                    min={0}
+                    step={1}
+                    max={duration}
+                    onChange={(_, value) => setPosition(value as number)} />
+            </Stack>
+        </div>
     );
 };

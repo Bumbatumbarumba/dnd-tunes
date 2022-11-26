@@ -1,4 +1,3 @@
-import { About } from "./about";
 import { AuthContext, AuthProvider } from "./auth";
 import { PrivateRoute } from "./privateRoute";
 import { MusicForm } from "./music/musicForm";
@@ -12,17 +11,18 @@ import { UsernameForm } from "./usernameForm";
 import { TagList } from "./tags/tagList";
 import { Settings } from "./settings";
 import { CustomButton } from "./customButton";
+import { MusicPlayer } from "./music/musicPlayer";
 
 export {
-    NavBar,
     AuthContext,
+    NavBar,
     AuthProvider,
     PrivateRoute,
     MusicForm,
     MusicList,
     MusicListItem,
+    MusicPlayer,
     SearchBar,
-    About,
     UsernameForm,
     TagForm,
     TagList,

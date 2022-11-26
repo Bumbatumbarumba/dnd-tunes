@@ -1,3 +1,8 @@
+export enum MusicSource {
+    youtube = "youtube",
+    spotify = "spotify",
+}
+
 export interface Tag {
     docId: string;
     userId: string;
@@ -11,6 +16,7 @@ export interface Song {
     songName: string;
     tags: string[];
     url: string;
+    source: MusicSource;
 }
 
 export interface Username {

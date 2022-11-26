@@ -5,8 +5,8 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
-import { About, AuthProvider, NavBar } from './components';
-import { MainPage, MyPage } from './views';
+import { AuthProvider, NavBar } from './components';
+import { About, MainPage, MyPage } from './views';
 
 function App() {
   return (

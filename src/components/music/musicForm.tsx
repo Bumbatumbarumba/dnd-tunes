@@ -29,7 +29,7 @@ export const MusicForm = () => {
                 <AccordionDetails>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <TextField id="outlined-basic" label="Song name" variant="outlined" onChange={(event) => setSongName(event.target.value)} />
-                        <TextField id="outlined-basic" label="URL" variant="outlined" onChange={(event) => setSongUrl(event.target.value)} />
+                        <TextField style={{ marginTop: "1em" }} id="outlined-basic" label="URL" variant="outlined" onChange={(event) => setSongUrl(event.target.value)} />
                         <div>
                             {tagList.map((tag, index) => {
                                 return <FormControlLabel key={tag.id}
